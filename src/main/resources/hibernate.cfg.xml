@@ -15,5 +15,17 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="entities.Computer" />
+        <mapping class="entities.Componente" />
     </session-factory>
 </hibernate-configuration>
+
+<!--
+        Oggetto hibernate-configuration dalla 3 alla 19
+            Oggetto session-factory dalla 4 alla 18, con dentro
+                Proprietà hibernate.connection.url      con valore jdbc:mysql://localhost:3306/hibernateprimo
+                Proprietà hibernate.connection.username con valore jaita
+                Proprietà hibernate.connection.password con valore jaita
+                Proprietà hibernate.connection.hibernate.hbm2ddl.auto con valore update
+
+                Un valore di tipo mapping con class -> entities.Computer
+-->

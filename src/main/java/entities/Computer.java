@@ -1,11 +1,9 @@
 package entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.util.StringJoiner;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity //Hibernate, occupati di fare persistenza degli oggetti di questa classe sul db
 public class Computer
@@ -13,21 +11,24 @@ public class Computer
 	@Id //Questo campo è una primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
 	private Long id;
-
-
 	private String model;
-	private int ramGb,hddGb;
-	private String gpu;
+
+	//LISTA DI FIGLI
+	//List è un SUPERTIPO di ARRAYLIST, esistono molti tipi di liste
+	//che discendono da List, arrayList è solo uno di essi
+	//a livello di utilizzo cambia NULLA
+	//OneToMany indica che è la parte 1 di una relazione 1-N
+	//in mappedBy dobbiamo mettere il nome della proprietà riferimento al padre nel figlio
+	//Il NOME DELLA PROPRIETÀ in componente soprà cui c'è ManyToOne
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "computerPadre")
+	private List<Componente> componenti = new ArrayList<>();
 
 	public Computer(){}
 
-	public Computer(Long id, String model, int ramGb, int hddGb, String gpu)
+	public Computer(Long id, String model)
 	{
 		this.id = id;
 		this.model = model;
-		this.ramGb = ramGb;
-		this.hddGb = hddGb;
-		this.gpu = gpu;
 	}
 
 	public Long getId()
@@ -50,45 +51,13 @@ public class Computer
 		this.model = model;
 	}
 
-	public int getRamGb()
+	public List<Componente> getComponenti()
 	{
-		return ramGb;
+		return componenti;
 	}
 
-	public void setRamGb(int ramGb)
+	public void setComponenti(List<Componente> componenti)
 	{
-		this.ramGb = ramGb;
-	}
-
-	public int getHddGb()
-	{
-		return hddGb;
-	}
-
-	public void setHddGb(int hddGb)
-	{
-		this.hddGb = hddGb;
-	}
-
-	public String getGpu()
-	{
-		return gpu;
-	}
-
-	public void setGpu(String gpu)
-	{
-		this.gpu = gpu;
-	}
-
-	@Override
-	public String toString()
-	{
-		return new StringJoiner(" ", "", ".")
-				.add("id: " + id)
-				.add("model: " + model)
-				.add("ramGb: " + ramGb)
-				.add("hddGb: " + hddGb)
-				.add("gpu: " + gpu)
-				.toString();
+		this.componenti = componenti;
 	}
 }
