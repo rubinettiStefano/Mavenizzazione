@@ -6,11 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity //Hibernate, occupati di fare persistenza degli oggetti di questa classe sul db
-public class Computer
+public class Computer extends BaseEntity
 {
-	@Id //Questo campo è una primary key
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
-	private Long id;
 	private String model;
 
 	//LISTA DI FIGLI
@@ -31,15 +28,6 @@ public class Computer
 		this.model = model;
 	}
 
-	public Long getId()
-	{
-		return id;
-	}
-
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
 
 	public String getModel()
 	{

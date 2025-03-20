@@ -13,7 +13,7 @@ public class AggiungereComponente
 		session.beginTransaction();
 
 
-		Componente componente = new Componente("RTXML 5090","GPU",3000);
+		Componente componente = new Componente("RTXML 6090","GPU",3000);
 
 		//Leggo computer padre dal db
 //		Computer padre =session.get(Computer.class,1);

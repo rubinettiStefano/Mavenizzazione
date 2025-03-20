@@ -16,6 +16,7 @@
 
         <mapping class="entities.Computer" />
         <mapping class="entities.Componente" />
+        <mapping class="entities.BaseEntity" />
     </session-factory>
 </hibernate-configuration>
 

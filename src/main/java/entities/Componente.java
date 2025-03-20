@@ -5,11 +5,9 @@ import jakarta.persistence.*;
 import java.util.StringJoiner;
 
 @Entity
-public class Componente
+public class Componente extends BaseEntity
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+
 
 	private String nome,tipo;
 	private double prezzo;
@@ -35,16 +33,6 @@ public class Componente
 		this.nome = nome;
 		this.tipo = tipo;
 		this.prezzo = prezzo;
-	}
-
-	public Long getId()
-	{
-		return id;
-	}
-
-	public void setId(Long id)
-	{
-		this.id = id;
 	}
 
 	public String getNome()
